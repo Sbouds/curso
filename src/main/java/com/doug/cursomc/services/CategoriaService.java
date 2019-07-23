@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.doug.cursomc.domain.Categoria;
 import com.doug.cursomc.repositories.CategoriaRepository;
-import com.doug.cursomc.resources.domain.Categoria;
 
 @Service
 public class CategoriaService {
