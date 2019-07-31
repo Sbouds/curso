@@ -10,7 +10,6 @@ import com.doug.cursomc.domain.ItemPedido;
 import com.doug.cursomc.domain.PagamentoComBoleto;
 import com.doug.cursomc.domain.Pedido;
 import com.doug.cursomc.domain.enums.EstadoPagamento;
-import com.doug.cursomc.repositories.ClienteRepository;
 import com.doug.cursomc.repositories.ItemPedidoRepository;
 import com.doug.cursomc.repositories.PagamentoRepository;
 import com.doug.cursomc.repositories.PedidoRepository;
@@ -33,6 +32,9 @@ public class PedidoService {
 	
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	@Autowired
 	private ClienteService clienteService;
@@ -62,7 +64,7 @@ public class PedidoService {
 			ip.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
-		System.out.println(obj);
+		emailService.sendOrderConfirmationEmail(obj);
 		return obj;
 	}
 }
